@@ -1,20 +1,20 @@
 # Hilal Technologic
 
-**Hilal Technologic** is a production-ready digital platform for a modern software agency — combining an agency website, tech blog, and digital product store into a single, scalable system.
+**Hilal Technologic** adalah platform digital untuk agensi software modern yang menyatukan website agensi, blog teknologi, dan toko produk digital dalam satu sistem yang skalabel.
 
-Built with a **dark-only, Linear-inspired UI**, a **strict API contract**, and a **clean full-stack architecture**, this project represents our engineering and design quality bar.
+Dibangun dengan **UI dark-only terinspirasi Linear**, **kontrak API yang ketat**, dan **arsitektur full-stack yang rapi**, project ini mencerminkan standar kualitas engineering dan desain kami.
 
 ---
 
 ## 🌌 Live Environment
 
-- **Frontend**: https://hilaltechnologic.com   
+- **Frontend**: https://hilaltechnologic.com
 
 ---
 
 ## 🎯 Product Scope
 
-- **Agency / Software House Website**
+- **Website Agency / Software House**
 - **Tech Blog** (Markdown, code highlighting, SEO-ready)
 - **Digital Product Store**
   - Themes
@@ -23,7 +23,7 @@ Built with a **dark-only, Linear-inspired UI**, a **strict API contract**, and a
 - **Secure Digital Delivery**
 - **Midtrans & Manual Payment Support**
 
-This is an **MVP**, but built with **production-grade standards** and scalability in mind.
+> Ini adalah **MVP** yang dibangun dengan **standar produksi** dan fokus skalabilitas.
 
 ---
 
@@ -33,7 +33,7 @@ This is an **MVP**, but built with **production-grade standards** and scalabilit
 - **Next.js (App Router)**
 - **TypeScript**
 - **Tailwind CSS**
-- Dark-only design system (no light mode, no toggle)
+- Dark-only design system (tanpa light mode)
 
 ### Backend
 - **Laravel 11**
@@ -42,7 +42,7 @@ This is an **MVP**, but built with **production-grade standards** and scalabilit
 - **Laravel Sanctum** (SPA cookie auth)
 - **Filament** (Admin Panel)
 
-### Infrastructure
+### Infrastruktur
 - VPS
 - Nginx
 - Redis
@@ -52,7 +52,7 @@ This is an **MVP**, but built with **production-grade standards** and scalabilit
 
 ## 🎨 Design System Philosophy
 
-Inspired by **Linear.app**:
+Terinspirasi dari **Linear.app**:
 
 - Dark-only UI
 - Neutral dark backgrounds
@@ -70,8 +70,8 @@ Inspired by **Linear.app**:
 
 ## 🔌 API Contract (v1)
 
-All endpoints are versioned under `/api/v1`.  
-This contract is the **single source of truth**.
+Semua endpoint versi ada di `/api/v1`.
+Kontrak ini adalah **single source of truth**.
 
 ### Public
 | Method | Endpoint |
@@ -112,10 +112,10 @@ This contract is the **single source of truth**.
 |------|---------|
 | POST | /midtrans/webhook |
 
-⚠️ **Rules**
-- Midtrans uses `redirect_url` only
-- No invented endpoints
-- Frontend follows API strictly
+**Rules**
+- Midtrans menggunakan `redirect_url` saja
+- Tidak ada endpoint tambahan tanpa kontrak
+- Frontend wajib mengikuti API
 
 ---
 
@@ -128,7 +128,7 @@ This contract is the **single source of truth**.
 - Secure digital delivery (token, expiry, limit)
 - Admin management via Filament
 
-### Database Tables
+### Database Tables (High-Level)
 - users
 - products
 - posts
@@ -154,7 +154,6 @@ This contract is the **single source of truth**.
 
 ### Routes
 ```
-
 /
 ├─ services
 │  └─ [slug]
@@ -170,68 +169,81 @@ This contract is the **single source of truth**.
 │  └─ orders
 │     └─ [orderNumber]
 └─ contact
-
 ```
 
 ### Key Features
 - Typed API client
 - Cookie-based auth (Sanctum)
-- Cart with localStorage
+- Cart dengan localStorage
 - Midtrans redirect flow
 - Manual payment upload
-- Secure download access for paid orders
+- Secure download access untuk paid orders
 - SEO: metadata, sitemap, JSON-LD
 
 ---
 
 ## 🔐 Secure Digital Delivery
 
-- Delivery token generated when order = **PAID**
+- Delivery token dibuat ketika order = **PAID**
 - Token expiry: **24 hours**
 - Download limit: **5**
 - IP & User-Agent logging
-- Files are **not public**
+- File **tidak public**
 
 ---
 
-## 🚀 Environment Variables
+## 🚀 Setup Lokal (Ringkas)
 
-Both frontend and backend include `.env.example`.
+### Prasyarat
+- Node.js 18+ (frontend)
+- PHP 8.2+ & Composer (backend)
+- MySQL & Redis
 
-Key notes:
-- `NEXT_PUBLIC_API_BASE_URL`
-- Sanctum cookie auth enabled
-- CORS restricted to `hilaltechnologic.com`
-
----
-
-## 📦 Deployment Assumptions
-
-- Nginx reverse proxy
-- Redis running
-- Queue workers active
-- Scheduler enabled
-- HTTPS enforced
-
----
-
-## 🧠 Engineering Principles
-
-- Explicit API contracts
-- Predictable state transitions
-- Secure by default
-- No over-engineering
-- Calm UI over visual noise
-
----
-
-## 🏁 Status
-
-✅ Production-ready MVP  
-🧩 Designed for iteration & scale  
-
----
-
-**Hilal Technologic**  
-Building calm, precise, and reliable digital products.
+### Frontend
+```bash
+cd frontend
+cp .env.example .env.local
+npm install
+npm run dev
 ```
+
+### Backend
+```bash
+cd api
+cp .env.example .env
+composer install
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+```
+
+---
+
+## 🔐 Environment Variables
+
+Frontend dan backend menyertakan `.env.example` masing-masing.
+Pastikan mengisi kredensial database, Redis, dan Midtrans sesuai environment lokal.
+
+---
+
+## 📦 Struktur Repo
+
+```
+.
+├─ api        # Laravel 11 backend
+├─ frontend   # Next.js app
+├─ docs       # Dokumentasi tambahan
+└─ README.md  # Ikhtisar project
+```
+
+---
+
+## 🤝 Kontribusi
+
+Silakan buat issue atau PR untuk perbaikan. Pastikan perubahan mengikuti design system dan kontrak API.
+
+---
+
+## 📝 Lisensi
+
+Hak cipta © Hilal Technologic. Semua hak dilindungi.
