@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'midtrans' => [
+        'server_key' => env('MIDTRANS_SERVER_KEY'),
+        'snap_url' => env('MIDTRANS_SNAP_URL', 'https://app.midtrans.com/snap/v2/vtweb'),
+        'manual_bank' => env('MIDTRANS_MANUAL_BANK', 'BCA'),
+        'manual_account' => env('MIDTRANS_MANUAL_ACCOUNT', '1234567890'),
+        'manual_name' => env('MIDTRANS_MANUAL_NAME', 'Hilal Technologic'),
+    ],
+
 ];
